@@ -1,11 +1,12 @@
 const CustomError = require("../extensions/custom-error");
 
 class VigenereCipheringMachine {
-  direct = true;
   constructor(direct) {
     if (!(typeof direct === 'undefined') && direct === false) this.direct = false;
+    else this.direct = true;
+    this.a = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
   }
-  a = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  
   encrypt(m, k) {
     if(typeof m === 'undefined' || typeof k === 'undefined') throw Error;
     m = m.toUpperCase();
