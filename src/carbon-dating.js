@@ -5,7 +5,7 @@ const HALF_LIFE_PERIOD= 5730;
 
 module.exports = function dateSample(sampleActivity) {
   let res;
-  if(sampleActivity !== 'string' || isNaN(sampleActivity) || (sampleActivity >= MODERN_ACTIVITY)) res = false;
-  else res = Math.ceil(MODERN_ACTIVITY / sampleActivity) / (0.693 / HALF_LIFE_PERIOD);
+  if(typeof sampleActivity !== 'string' || !/^\d{1,}(\.\d{1,})?$/.test(sampleActivity) || sampleActivity<=0 || (sampleActivity >= MODERN_ACTIVITY)) res = false;
+  else res = Math.ceil(Math.log(MODERN_ACTIVITY / sampleActivity) / (0.693 / HALF_LIFE_PERIOD));
   return res;
 };
