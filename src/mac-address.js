@@ -17,12 +17,10 @@ const { NotImplementedError } = require('../extensions/index.js');
 function isMAC48Address(n) {
   const hexChars = '0123456789ABCDEF';
   const array = n.split('-');
-  console.log(n);
   if (array.length !== 6) {
     return false;
   }
   return array.every(element => {
-    console.log(`${element[0]} + ${element[1]}`);
     if (element.length !== 2) {
       return false;
     }
